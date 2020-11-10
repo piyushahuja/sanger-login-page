@@ -150,7 +150,7 @@ class AppHandler(BaseHTTPRequestHandler):
             self.log_message(f"SECRET = {SECRET}")
             encrypted_password = encrypt_message(passwd)
             enc = base64.b64encode(ensure_bytes(user + ':') + encrypted_password).decode()
-            self.send_header('Set-Cookie', f'nginxauth={enc}; httponly; Max-Age=200')
+            self.send_header('Set-Cookie', f'nginxauth={enc}; httponly; Max-Age=20000')
             self.send_header('Location', target)
             self.end_headers()
 
